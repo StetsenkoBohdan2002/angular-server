@@ -3,10 +3,10 @@ import morgan from 'morgan';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import authRouter from './routers/authRouter.js'
-import boardsRouter from './routers/boardsRouter.js'
-import tasksRouter from './routers/tasksRouter.js'
-import commentsRouter from './routers/commentsRouter.js'
+import authRouter from './routers/authRouter.js';
+import boardsRouter from './routers/boardsRouter.js';
+import tasksRouter from './routers/tasksRouter.js';
+import commentsRouter from './routers/commentsRouter.js';
 
 const app = express();
 dotenv.config();
@@ -40,7 +40,9 @@ app.use('/api/boards', boardsRouter);
 app.use('/api/tasks', tasksRouter);
 app.use('/api/comments', commentsRouter);
 
-
+app.get('/health', (req, res) => {
+  res.status(200).json({ message: 'OK' });
+});
 
 app.use(errorHandler);
 
